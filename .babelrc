@@ -1,4 +1,13 @@
 {
   "presets": ["react"],
-  "plugins": ["transform-es2015-modules-commonjs"]
+  "plugins": ["transform-es2015-modules-commonjs"],
+  "env": {
+    "production": {
+    },
+    "development": {
+      "plugins": [
+        //"react-hot-loader/babel"
+      ]
+    }
+  }
 }

@@ -13,26 +13,54 @@ export default {
   target: 'electron-renderer',
 
   entry: [
-    path.join(__dirname, 'app/app.global.css')
+    path.join(__dirname, 'app/index.jsx')
   ],
 
   output: {
     publicPath: `http://localhost:${port}/dist/`,
-    filename: 'hello.js'
+    filename: 'bundle.js'
   },
 
   module: {
-    rules: [{
-      test: /\.global\.css$/,
-      use: [
-        {
-          loader: 'style-loader'
-        },
-        {
-          loader: 'css-loader',
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
         }
-      ]
-    }]
+      },
+      {
+        test: /\.global\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+          }
+        ]
+      },
+      {
+        test: /^((?!\.global).)*\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
+            }
+          }
+        ]
+      }
+    ]
   },
 
   plugins: [

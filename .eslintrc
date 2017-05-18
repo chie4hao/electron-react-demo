@@ -34,8 +34,6 @@
     "react/prefer-stateless-function": "off"
   },
   "plugins": [
-    "flowtype",
-    "flowtype-errors",
     "import",
     "promise",
     "compat",
