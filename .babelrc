@@ -1,13 +1,15 @@
 {
-  "presets": ["react"],
-  "plugins": ["transform-es2015-modules-commonjs"],
+  "presets": ["es2015","react"],
+  "plugins": ["transform-es2015-modules-commonjs","react-hot-loader/babel"],
   "env": {
     "production": {
     },
     "development": {
       "plugins": [
-        //"react-hot-loader/babel"
+        // "react-hot-loader/babel"
       ]
     }
   }
 }
+
+

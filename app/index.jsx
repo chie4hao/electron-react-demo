@@ -5,15 +5,22 @@ import './app.global.css';
 
 
 render(
-  // <AppContainer>
+  <AppContainer>
     <div>
       123
     </div>,
-  // </AppContainer>,
+  </AppContainer>,
   document.getElementById('root')
 );
-/*
+
 if (module.hot) {
-  console.log(1);
+  module.hot.accept('./containers/App', () => {
+    const NextApp = require('./containers/App').default;
+    ReactDOM.render(
+      <AppContainer>
+        <NextApp/>
+      </AppContainer>,
+      document.getElementById('root')
+    );
+  });
 }
-*/

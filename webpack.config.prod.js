@@ -4,7 +4,8 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 
 export default {
-  // target: 'electron-renderer',
+  devtool: 'source-map',
+  target: 'electron-renderer',
 
   entry: [
     path.join(__dirname, 'app/index.jsx')
