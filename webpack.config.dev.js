@@ -10,10 +10,15 @@ const port = 12450;
 const publicPath = `http://localhost:${port}/dist/`;
 
 export default {
+  devtool: 'inline-source-map',
+
   target: 'electron-renderer',
 
   entry: [
-    path.join(__dirname, 'app/index.jsx')
+    'react-hot-loader/patch',
+    `webpack-dev-server/client?http://localhost:${port}/`,
+    'webpack/hot/only-dev-server',
+    path.join(__dirname, 'app/index')
   ],
 
   output: {
@@ -24,7 +29,7 @@ export default {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -63,10 +68,24 @@ export default {
     ]
   },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin({
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
 
-    })
+  plugins: [
+    /* new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      manifest: require(manifest),
+      sourceType: 'var',
+    }),*/
+
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      debug: true
+    }),
   ],
   devServer: {
     port,

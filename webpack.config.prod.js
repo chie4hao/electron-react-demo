@@ -8,7 +8,7 @@ export default {
   target: 'electron-renderer',
 
   entry: [
-    path.join(__dirname, 'app/index.jsx')
+    path.join(__dirname, 'app/index')
   ],
 
   output: {
@@ -19,7 +19,7 @@ export default {
 
   module: {
     rules: [{
-      test: /\.jsx$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
@@ -50,6 +50,11 @@ export default {
       }),
     }]
   },
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
+
   plugins: [
     new ExtractTextPlugin('style.css')
   ]
