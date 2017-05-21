@@ -1,7 +1,7 @@
 import path from 'path';
 // import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
+import BabiliPlugin from 'babili-webpack-plugin';
 
 export default {
   devtool: 'source-map',
@@ -56,6 +56,7 @@ export default {
   },
 
   plugins: [
+    new BabiliPlugin(),
     new ExtractTextPlugin('style.css')
   ]
 };

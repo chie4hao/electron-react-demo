@@ -12,7 +12,7 @@ export default class Root extends Component {
   render() {
     return (
       <div>
-        23234fs345
+        23234
       </div>
     );
   }

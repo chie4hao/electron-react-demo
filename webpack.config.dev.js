@@ -83,9 +83,6 @@ export default {
     new webpack.NamedModulesPlugin(),
 
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      debug: true
-    }),
   ],
   devServer: {
     port,
