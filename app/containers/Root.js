@@ -1,19 +1,36 @@
 import React, { Component } from 'react';
 
-/* export default function Root() {
-  return (
-    <div>
-      124545
-    </div>
-  );
-}*/
 
 export default class Root extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.setState({
+        date: new Date()
+      }),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
   render() {
     return (
       <div>
-        23234
+        {this.state.date.toLocaleTimeString()}
       </div>
     );
   }
 }
+

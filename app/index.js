@@ -4,7 +4,6 @@ import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
 import './app.global.css';
 
-
 ReactDOM.render(
   <AppContainer>
     <Root />
@@ -13,7 +12,6 @@ ReactDOM.render(
 );
 
 if (module.hot) {
-  console.log(1);
   module.hot.accept('./containers/Root', () => {
     const NextRoot = require('./containers/Root').default; // eslint-disable-line global-require
     ReactDOM.render(
