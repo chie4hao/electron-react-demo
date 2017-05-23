@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 
-export default class Root extends Component {
+class Root extends Component {
+
   constructor(props) {
     super(props);
     this.state = { date: new Date() };
@@ -9,9 +10,7 @@ export default class Root extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(
-      () => this.setState({
-        date: new Date()
-      }),
+      () => this.setState({ date: new Date() }),
       1000
     );
   }
@@ -20,11 +19,6 @@ export default class Root extends Component {
     clearInterval(this.timerID);
   }
 
-  tick() {
-    this.setState({
-      date: new Date()
-    });
-  }
   render() {
     return (
       <div>
@@ -34,3 +28,12 @@ export default class Root extends Component {
   }
 }
 
+export default function App() {
+  return (
+    <div>
+      <Root />
+      <Root />
+      <Root />
+    </div>
+  );
+}
