@@ -1,39 +1,20 @@
 import React, { Component } from 'react';
+import styles from './Root.css';
 
-
-class Root extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
+function Repeat(props) {
+  const items = [];
+  for (let i = 0; i < props.numTimes; i++) {
+    items.push(props.children(i));
   }
-
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.setState({ date: new Date() }),
-      1000
-    );
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.date.toLocaleTimeString()}
-      </div>
-    );
-  }
+  return <div className={styles.blue}>{items}</div>;
 }
+
 
 export default function App() {
   return (
-    <div>
-      <Root />
-      <Root />
-      <Root />
-    </div>
+    <Repeat numTimes={10}>
+      {(index) => <div key={index}> {index} </div>}
+    </Repeat>
   );
 }
+
