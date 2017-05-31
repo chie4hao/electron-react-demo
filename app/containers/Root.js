@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-// import styles from './Root.css';
+import styles from './Root.css';
 
-function doge (target) {
-  target.isDoge = "sl";
-}
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
 
-@doge
-class Dog {}
+    this.state = {
+      count: 0,
+    };
+  }
 
-export default function App() {
-  return (
-    <div>
-      {Dog.isDoge}
-    </div>
-  );
+  handleClick(e) {
+    e.preventDefault();
+    this.setState({
+      count: this.state.count + 1
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.state.count}</p>
+        <button className={styles.orange} onClick={this.handleClick}>更新</button>
+      </div>
+    );
+  }
 }
 

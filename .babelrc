@@ -1,11 +1,13 @@
 {
-  "presets": ["stage-0","react"],
-  "plugins": ["transform-es2015-modules-commonjs","transform-decorators-legacy"],
+  "presets": ["stage-0",/*["latest",{"es2015":{"modules":false}}],*/ "react"],
+  "plugins": ["transform-es2015-modules-commonjs","transform-decorators-legacy",],
   "env": {
     "production": {
     },
     "development": {
       "plugins": [
+        "transform-class-properties",
+        "transform-es2015-classes",
         "react-hot-loader/babel"
       ]
     }
